@@ -211,8 +211,12 @@
 
     function checkValueOfThemeMode() {
         let theme_mode = getLocalStorage('theme_mode');
+        if (!theme_mode) {
+            theme_mode = 'lightmode';
+            setLocalStorage('theme_mode', theme_mode);
+        }
         document.querySelector('body').classList.add(theme_mode);
-        if (theme_mode && theme_mode == "lightmode") {
+        if (theme_mode == "lightmode") {
             document.querySelector('.light-on').setAttribute("style", "display: none");
             document.querySelector('.light-off').setAttribute("style", "display:flex!important");
         }
